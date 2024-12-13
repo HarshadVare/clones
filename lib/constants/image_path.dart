@@ -1,3 +1,4 @@
 class ImagePath {
-  static const logo = 'assets/svg/logo.svg';
+  static const kiteLogo = 'assets/svg/logo.svg';
+  static const zerodhaLogo = 'assets/svg/zerodha.svg';
 }
