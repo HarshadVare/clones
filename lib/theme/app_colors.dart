@@ -6,4 +6,5 @@ class AppColors {
   // ignore: deprecated_member_use
   static Color dividerColor = Colors.grey.withOpacity(0.23);
   static Color logoColor = Colors.black.withOpacity(0.43);
+  static Color blackColor = Colors.black;
 }

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:svg_flutter/svg.dart';
+import 'package:zerodha_clone/config/app_router.dart';
+import 'package:zerodha_clone/config/app_router_constatnt.dart';
+import 'package:zerodha_clone/config/app_text.dart';
 import 'package:zerodha_clone/constants/image_path.dart';
 import 'package:zerodha_clone/features/Welcome_to_Kite/presentation/view/widgets/try_new_button.dart';
 import 'package:zerodha_clone/theme/app_colors.dart';
@@ -30,10 +33,11 @@ class WelcomeScreen extends StatelessWidget {
                 SizedBox(
                   height: 50,
                 ),
-                Text(
-                  'Welcome to\nKite by Zerodha',
-                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-                ),
+                AppText(
+                    text: 'Welcome to\nKite by Zerodha',
+                    color: AppColors.blackColor,
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold),
                 SizedBox(
                   height: 50,
                 ),
@@ -47,10 +51,11 @@ class WelcomeScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          'Open a free account',
-                          style: TextStyle(fontSize: 18),
-                        ),
+                        AppText(
+                            text: 'Open a free account',
+                            color: AppColors.blackColor,
+                            fontSize: 18,
+                            fontWeight: FontWeight.normal),
                         Icon(Icons.person_2_outlined)
                       ],
                     ),
@@ -60,16 +65,18 @@ class WelcomeScreen extends StatelessWidget {
                   color: AppColors.dividerColor,
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () => AppRouter.pushReplacement(
+                      AppRouterConstatnt.loginSCreen, context),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 12.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          'Login to Kite',
-                          style: TextStyle(fontSize: 18),
-                        ),
+                        AppText(
+                            text: 'Login to Kite',
+                            color: AppColors.blackColor,
+                            fontSize: 18,
+                            fontWeight: FontWeight.normal),
                         Icon(Icons.logout)
                       ],
                     ),
@@ -90,12 +97,12 @@ class WelcomeScreen extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                Text(
-                  "NSE & BSE - SEBI Registration no.: INZ000031633 | MCX SEBI Registration no.: INZ000038238 | CDSL - SEBI Registration no.: IN-DP-431-2019 | Smart Online Dispute Resolution | SEBI SCORES",
-                  style: TextStyle(
+                AppText(
+                    text:
+                        "NSE & BSE - SEBI Registration no.: INZ000031633 | MCX SEBI Registration no.: INZ000038238 | CDSL - SEBI Registration no.: IN-DP-431-2019 | Smart Online Dispute Resolution | SEBI SCORES",
                     color: AppColors.logoColor,
-                  ),
-                )
+                    fontSize: 14,
+                    fontWeight: FontWeight.normal)
               ],
             ),
           ),
