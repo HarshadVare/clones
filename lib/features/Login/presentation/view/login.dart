@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:svg_flutter/svg.dart';
 import 'package:zerodha_clone/config/app_text.dart';
 import 'package:zerodha_clone/config/app_text_field.dart';
 import 'package:zerodha_clone/constants/image_path.dart';
+import 'package:zerodha_clone/features/Login/presentation/cubit/login_cubit.dart';
 import 'package:zerodha_clone/theme/app_colors.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -62,22 +64,33 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   width: double.infinity,
                   height: 45,
-                  child: TextButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        print("Email: ${_idController.text}");
-                        print("Password: ${_passwordController.text}");
+                  child: BlocConsumer<LoginCubit, LoginState>(
+                    listener: (context, state) {},
+                    builder: (context, state) {
+                      if (state is LoginInitial) {
+                        return Center(child: CircularProgressIndicator());
+                      } else {
+                        return TextButton(
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              context.read<LoginCubit>().login(
+                                    username: _idController.text,
+                                    password: _passwordController.text,
+                                  );
+                            }
+                          },
+                          style: TextButton.styleFrom(
+                            backgroundColor: AppColors.blue, // Background color
+                            foregroundColor: Colors.white, // Text color
+                            shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.circular(4.0), // Rounded corners
+                            ),
+                          ),
+                          child: Text('LOGIN'),
+                        );
                       }
                     },
-                    style: TextButton.styleFrom(
-                      backgroundColor: AppColors.blue, // Background color
-                      foregroundColor: Colors.white, // Text color
-                      shape: RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.circular(4.0), // Rounded corners
-                      ),
-                    ),
-                    child: Text('LOGIN'),
                   ),
                 ),
                 SizedBox(
